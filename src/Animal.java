@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Random;
 
-public abstract class Animal {
+public abstract class Animal implements Ator{
 
     // Características compartilhadas por todos os coelhos (atributos estáticos, da classe).
 
@@ -50,11 +50,11 @@ public abstract class Animal {
      * Verifica se o animal está vivo ou não.
      * @return verdadeiro se o animal ainda estiver vivo.
      */
-    public boolean estaVivo()
-    {
+    @Override
+    public boolean estaAtivo(){
         return vivo;
     }
-    
+
     /**
      * Define que o animal não está mais vivo.
      * Ele é removido do campo.
@@ -114,7 +114,7 @@ public abstract class Animal {
      * Novos nascimentos serão feitos em locais vizinhos livres.
      * @param novosAnimais Uma lista para retornar os animais recém-nascidos.
      */
-    protected void reproduzir(List<Animal> novosAnimais)
+    protected void reproduzir(List<Ator> novosAnimais)
     {
         // Novos animais nascem em locais vizinhos.
         // Obtém uma lista de locais vizinhos livres.
@@ -137,7 +137,6 @@ public abstract class Animal {
     }
 
     
-    public abstract void agir(List<Animal> novosAnimais);
 
     protected abstract int obterIdadeMaxima();
     
