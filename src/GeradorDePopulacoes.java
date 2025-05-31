@@ -17,7 +17,7 @@ public class GeradorDePopulacoes {
     public static void definirCores(VisaoSimulador visao) {
         visao.definirCor(Coelho.class, Color.ORANGE);
         visao.definirCor(Raposa.class, Color.BLUE);
-        visao.definirCor(Cacador.class, Color.GREEN);
+        visao.definirCor(Cacador.class, Color.BLACK);
     }   
 
     /**

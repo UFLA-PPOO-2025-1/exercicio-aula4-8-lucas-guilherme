@@ -26,15 +26,16 @@ public class Cacador extends Ator {
         return true;
     }
 
-    public cacar(){
+    protected Localizacao cacar(){
 
         List<Localizacao> vizinhas = obterCampo().localizacoesVizinhas(obterLocalizacao());
 		Iterator<Localizacao> it = vizinhas.iterator();
 		Localizacao localizacaoFinal = null;
 		while(it.hasNext()) {
 		    Localizacao onde = it.next();
-		    Object animal = obterCampo().obterObjetoEm(onde);
-		    if(animal instanceof Animal) {
+		    Object ator = obterCampo().obterObjetoEm(onde);
+		    if(ator instanceof Animal) {
+                Animal animal = (Animal) ator;
 		        if(animal.estaAtivo()) { 
 		            animal.morrer();
 		            localizacaoFinal = onde;
