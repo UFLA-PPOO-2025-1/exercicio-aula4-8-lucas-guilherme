@@ -66,11 +66,11 @@ public class Raposa extends Animal
      * @param novasRaposas Uma lista para retornar as raposas recém-nascidas.
      */
     @Override
-    public void agir(List<Animal> novasRaposas)
+    public void agir(List<Ator> novasRaposas)
     {
         incrementarIdade();
         incrementarFome();
-        if(estaVivo()) {
+        if(estaAtivo()) {
             reproduzir(novasRaposas);            
             // Move-se em direção a uma fonte de comida, se encontrada.
             Localizacao novaLocalizacao = buscarComida();
@@ -112,10 +112,10 @@ public class Raposa extends Animal
 		Localizacao localizacaoFinal = null;
 		while(it.hasNext()) {
 		    Localizacao onde = it.next();
-		    Object animal = obterCampo().obterObjetoEm(onde);
-		    if(animal instanceof Coelho) {
-		        Coelho coelho = (Coelho) animal;
-		        if(coelho.estaVivo()) { 
+		    Ator ator = obterCampo().obterObjetoEm(onde);
+		    if(ator instanceof Coelho) {
+		        Coelho coelho = (Coelho) ator;
+		        if(coelho.estaAtivo()) { 
 		            coelho.morrer();
 		            nivelComida += VALOR_COMIDA_COELHO;
 		            if (nivelComida > NIVEL_COMIDA_MAXIMO) {

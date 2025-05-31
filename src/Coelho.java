@@ -45,10 +45,10 @@ public class Coelho extends Animal
      * @param novosCoelhos Uma lista para retornar os coelhos recém-nascidos.
      */
     @Override
-    public void agir(List<Animal> novosCoelhos)
+    public void agir(List<Ator> novosCoelhos)
     {
         incrementarIdade();
-        if(estaVivo()) {
+        if(estaAtivo()) {
             reproduzir(novosCoelhos);            
             // Tenta se mover para uma localização livre.
             Localizacao novaLocalizacao = obterCampo().localizacaoVizinhaLivre(obterLocalizacao());
