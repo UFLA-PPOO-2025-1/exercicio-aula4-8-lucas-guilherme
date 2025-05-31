@@ -112,9 +112,9 @@ public class Raposa extends Animal
 		Localizacao localizacaoFinal = null;
 		while(it.hasNext()) {
 		    Localizacao onde = it.next();
-		    Object animal = obterCampo().obterObjetoEm(onde);
-		    if(animal instanceof Coelho) {
-		        Coelho coelho = (Coelho) animal;
+		    Ator ator = obterCampo().obterObjetoEm(onde);
+		    if(ator instanceof Coelho) {
+		        Coelho coelho = (Coelho) ator;
 		        if(coelho.estaAtivo()) { 
 		            coelho.morrer();
 		            nivelComida += VALOR_COMIDA_COELHO;

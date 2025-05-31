@@ -33,7 +33,7 @@ public class Cacador extends Ator {
 		Localizacao localizacaoFinal = null;
 		while(it.hasNext()) {
 		    Localizacao onde = it.next();
-		    Object ator = obterCampo().obterObjetoEm(onde);
+		    Ator ator = obterCampo().obterObjetoEm(onde);
 		    if(ator instanceof Animal) {
                 Animal animal = (Animal) ator;
 		        if(animal.estaAtivo()) { 
