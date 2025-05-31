@@ -6,7 +6,9 @@ public class GeradorDePopulacoes {
     // A probabilidade de uma raposa ser criada em qualquer posição da grade.
     private static final double PROBABILIDADE_CRIACAO_RAPOSA = 0.02;
     // A probabilidade de um coelho ser criado em qualquer posição.
-    private static final double PROBABILIDADE_CRIACAO_COELHO = 0.08; 
+    private static final double PROBABILIDADE_CRIACAO_COELHO = 0.08;
+    // A probabilidade de um cacador ser criado em qualquer posição.
+    private static final double PROBABILIDADE_CRIACAO_CACADOR = 0.005;
 
     /**
      * Define as cores de cada espécie de animal nas visões do simulador
@@ -15,6 +17,7 @@ public class GeradorDePopulacoes {
     public static void definirCores(VisaoSimulador visao) {
         visao.definirCor(Coelho.class, Color.ORANGE);
         visao.definirCor(Raposa.class, Color.BLUE);
+        visao.definirCor(Cacador.class, Color.GREEN);
     }   
 
     /**
@@ -35,6 +38,11 @@ public class GeradorDePopulacoes {
                     Localizacao localizacao = new Localizacao(linha, coluna);
                     Coelho coelho = new Coelho(true, campo, localizacao);
                     atores.add(coelho);
+                }
+                else if(rand.nextDouble() <= PROBABILIDADE_CRIACAO_CACADOR) {
+                    Localizacao localizacao = new Localizacao(linha, coluna);
+                    Cacador cacador = new Cacador(campo, localizacao);
+                    atores.add(cacador);
                 }
                 // caso contrário, deixa a localização vazia.
             }

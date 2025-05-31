@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Random;
 
-public abstract class Animal implements Ator{
+public abstract class Animal extends Ator{
 
     // Características compartilhadas por todos os coelhos (atributos estáticos, da classe).
 
@@ -14,20 +14,15 @@ public abstract class Animal implements Ator{
     private int idade;
     // Indica se o animal está vivo ou não.
     private boolean vivo;
-    // A localização do animal.
-    private Localizacao localizacao;
-    // O campo ocupado.
-    private Campo campo;
 
     public Animal(boolean idadeAleatoria, Campo campo, Localizacao localizacao)
     {
+        super(campo, localizacao);
         vivo = true;
         idade = 0;
         if(idadeAleatoria) {
             idade = rand.nextInt(obterIdadeMaxima());
         }
-        this.campo = campo;
-        definirLocalizacao(localizacao);
     }
 
     public int obterIdade() {
@@ -62,39 +57,13 @@ public abstract class Animal implements Ator{
     protected void morrer()
     {
         vivo = false;
-        if(localizacao != null) {
-            campo.limpar(localizacao);
-            localizacao = null;
-            campo = null;
+        if(obterLocalizacao() != null) {
+            obterCampo().limpar(obterLocalizacao());
+            modificarLocalizacao(null);
+            modificarCampo(null);
         }
     }
     
-    /**
-     * Retorna a localização do animal.
-     * @return A localização do animal.
-     */
-    public Localizacao obterLocalizacao()
-    {
-        return localizacao;
-    }
-    
-    /**
-     * Coloca o animal na nova localização no campo fornecido.
-     * @param novaLocalizacao A nova localização do animal.
-     */
-    protected void definirLocalizacao(Localizacao novaLocalizacao)
-    {
-        if(localizacao != null) {
-            campo.limpar(localizacao);
-        }
-        localizacao = novaLocalizacao;
-        campo.colocar(this, novaLocalizacao);
-    }
-
-    public Campo obterCampo() {
-        return campo;
-    }
-
     /**
      * Gera um número representando o número de nascimentos,
      * se puder procriar.
